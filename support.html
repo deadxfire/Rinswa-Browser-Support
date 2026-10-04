@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Support and Help Center for Rinswa Browser">
+    <meta name="description" content="Support and Help Center for Rinswa Browser - FAQs, Theme Customization, Updates, and Downloads">
     <title>Support | Rinswa Browser</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #050505;
@@ -91,8 +92,8 @@
         }
 
         .brand img {
-            height: 48px;
-            width: 48px;
+            height: 44px;
+            width: 44px;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
             transition: transform 0.3s ease;
@@ -115,13 +116,14 @@
         .nav-links {
             display: flex;
             gap: 32px;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-main);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -149,7 +151,7 @@
         .support-container {
             flex: 1;
             max-width: 1000px;
-            margin: 60px auto;
+            margin: 50px auto 80px auto;
             padding: 0 40px;
             width: 100%;
             animation: fadeUp 0.8s ease-out forwards;
@@ -157,22 +159,130 @@
 
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .header h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
+        }
+
+        /* Release Banner */
+        .release-banner {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(255, 0, 85, 0.08));
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .release-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981, #3b82f6, #8b5cf6);
+        }
+
+        .badge-release {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: rgba(0, 240, 255, 0.15);
+            color: var(--accent-primary);
+            border: 1px solid rgba(0, 240, 255, 0.35);
+            margin-bottom: 14px;
+        }
+
+        .release-banner h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .release-banner p {
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
+        }
+
+        .banner-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-cyan {
+            background: linear-gradient(135deg, #00F0FF, #0099FF) !important;
+            color: #050505 !important;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35) !important;
+            font-weight: 700 !important;
+        }
+
+        .btn-cyan:hover {
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.55) !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #fff !important;
+            box-shadow: none !important;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border-color: rgba(0, 240, 255, 0.4) !important;
+            transform: translateY(-2px);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00F0FF;
+            font-size: 0.9em;
+        }
+
+        .hash-code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            margin-top: 6px;
+            margin-bottom: 12px;
+            word-break: break-all;
+            user-select: all;
         }
 
         /* FAQ Section */
@@ -186,7 +296,7 @@
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 30px;
+            padding: 28px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             transition: all 0.3s ease;
@@ -194,7 +304,7 @@
 
         .faq-card:hover {
             border-color: rgba(0, 240, 255, 0.3);
-            transform: translateX(10px);
+            transform: translateX(6px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -208,10 +318,18 @@
             gap: 12px;
         }
 
-        .faq-card p {
+        .faq-card p, .faq-card div {
             color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 1.05rem;
+            line-height: 1.65;
+            font-size: 1.02rem;
+        }
+
+        .faq-card ul {
+            margin-top: 8px;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
         .contact-box {
@@ -227,20 +345,21 @@
         .contact-box h3 {
             font-family: 'Outfit', sans-serif;
             font-size: 1.8rem;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .contact-box p {
             color: var(--text-muted);
             margin-bottom: 24px;
+            font-size: 1.05rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 36px;
+            padding: 13px 32px;
             border-radius: 50px;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             text-decoration: none;
             background: linear-gradient(135deg, var(--accent-secondary), #ff5500);
@@ -269,8 +388,9 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             nav { padding: 20px; }
-            .header h2 { font-size: 2.5rem; }
+            .header h2 { font-size: 2.3rem; }
             .support-container { padding: 0 20px; }
+            .banner-actions { flex-direction: column; }
         }
     </style>
 </head>
@@ -285,40 +405,114 @@
         </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="index.html#download">Download</a>
             <a href="support.html" class="active">Support</a>
-            <a href="https://github.com/deadxfire/Rinswa-browser" target="_blank">Source</a>
+            <a href="https://github.com/deadxfire/Rinswa-browser" target="_blank" rel="noopener">Source</a>
         </div>
     </nav>
 
     <div class="support-container">
         <div class="header">
-            <h2>Help & Support</h2>
-            <p>Find answers to common questions or reach out to our team.</p>
+            <h2>Help & Support Center</h2>
+            <p>Answers to common questions, theme guides, updates, and release information.</p>
+        </div>
+
+        <!-- Release Announcement Card -->
+        <div class="release-banner">
+            <div class="badge-release">⚡ Latest Release: v1.0.3 Stable</div>
+            <h3>Universal Theme Compatibility & All Tabs Manager are Live</h3>
+            <p>
+                Rinswa Browser v1.0.3 delivers complete theme freedom with dynamic high-contrast readability in Light mode, an expanded All Tabs manager with full titles, zero telemetry pings, and built-in uBlock Origin.
+            </p>
+            <div class="banner-actions">
+                <a href="https://github.com/deadxfire/Rinswa-browser/releases/download/v1.0.3/rinswa-1.0.3.en-US.win64.installer.exe" class="btn btn-cyan">
+                    📥 Download Installer (.exe) • 96.7 MB
+                </a>
+                <a href="https://github.com/deadxfire/Rinswa-browser/releases/tag/v1.0.3" target="_blank" rel="noopener" class="btn btn-ghost">
+                    📦 View Release Notes & Portable Zip
+                </a>
+            </div>
         </div>
 
         <div class="faq-grid">
             <div class="faq-card">
-                <h3><span>🔧</span> How do I update Rinswa?</h3>
-                <p>Rinswa checks for updates automatically in the background. If you want to check manually, go to Settings &gt; Help &gt; About Rinswa.</p>
-            </div>
-            
-            <div class="faq-card">
-                <h3><span>🎨</span> How do I customize the Cyber-Glass theme?</h3>
-                <p>The Cyber-Glass theme is native to Rinswa. You can tweak the transparency levels and accent colors in Settings &gt; Appearance.</p>
+                <h3><span>🎨</span> How do I switch themes (Light, Dark, and Custom themes)?</h3>
+                <p>
+                    Rinswa v1.0.3 introduces full Universal Theme compatibility. Open the App Menu <code>☰</code> &gt; <strong>Add-ons and themes</strong> (or press <code>Ctrl + Shift + A</code>) and select the <strong>Themes</strong> tab:
+                </p>
+                <ul>
+                    <li><strong>Rinswa Theme</strong>: The signature Cyber-Glass glossy ribbon aesthetic enabled by default.</li>
+                    <li><strong>Light Theme</strong>: Fully optimized with dynamic high-contrast dark text (<code>#15141a</code>) so tabs, omnibox text, and toolbar icons are crisp and readable on white surfaces.</li>
+                    <li><strong>Dark Theme &amp; Alpenglow</strong>: High-contrast midnight and dusk dark themes.</li>
+                    <li><strong>Custom Themes</strong>: Install any third-party theme from <em>addons.mozilla.org</em> seamlessly.</li>
+                </ul>
             </div>
 
             <div class="faq-card">
-                <h3><span>🛡️</span> Is my data safe?</h3>
-                <p>Yes. Rinswa is built on the Firefox 157 engine but strips out unnecessary telemetry. We believe your local data belongs to you, and ad-blocking is built directly into the browser via native extensions.</p>
+                <h3><span>📑</span> How do I use the All Tabs manager dropdown?</h3>
+                <p>
+                    Click the tab list chevron icon (<code>v</code>) at the far right of the tab bar, or press <code>Ctrl + Shift + A</code>. In v1.0.3, the dropdown renders with full tab titles, website favicons, sound playback indicators, and individual close buttons so you can manage dozens of open tabs effortlessly.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span>🛡️</span> How does Rinswa's built-in adblocking work?</h3>
+                <p>
+                    uBlock Origin is pre-integrated into Rinswa directly at the engine level. No manual extension installation is required. The uBlock shield icon is pinned to your address bar on initial startup, automatically blocking video advertisements, intrusive telemetry trackers, popups, and crypto-miners.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span>🌄</span> How do I customize the Alpine Sunset background or choose custom wallpapers?</h3>
+                <p>
+                    The signature Alpine Sunset wallpaper is rendered natively with zero flicker. To choose your own wallpaper or adjust blur and transparency, navigate to <strong>Settings</strong> (<code>about:preferences</code>) &gt; <strong>Appearance</strong>, or customize your new tab preferences.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span>🔧</span> How do I update Rinswa?</h3>
+                <p>
+                    Rinswa automatically checks for updates in the background. To check manually, open the App Menu <code>☰</code> &gt; <strong>Help and Report</strong> &gt; <strong>About Rinswa</strong>. You can also download the latest standalone installers and portable zip archives from our official <a href="https://github.com/deadxfire/Rinswa-browser/releases" target="_blank" rel="noopener" style="color:var(--accent-primary);">GitHub Releases</a>.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span>🔐</span> Where can I verify installer integrity and SHA-256 checksums?</h3>
+                <div>
+                    Official v1.0.3 release files and their SHA-256 checksums:
+                    <br><br>
+                    <strong>rinswa-1.0.3.en-US.win64.installer.exe (Standalone Installer)</strong>
+                    <div class="hash-code-block">f84e61629b256ccdc1ea82e313006b20d2ef2c647c1adcea90d7b2af4ff41052</div>
+                    <strong>rinswa-1.0.3.en-US.win64.zip (Standalone Portable Archive)</strong>
+                    <div class="hash-code-block">86f55f31fd166a0287b6f5df237d21166eae2cbdfe41161d320896a8dab5fadb</div>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <h3><span>💻</span> What are the system requirements?</h3>
+                <p>
+                    Rinswa is built for 64-bit Windows 10 and Windows 11. Recommended specifications: 4 GB of RAM (8 GB recommended for heavy multitasking) and 500 MB of available storage space.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h3><span>🛡️</span> Is my data safe and private?</h3>
+                <p>
+                    Yes. Rinswa is built on the Mozilla Gecko engine (157.0.1) but has all upstream telemetry endpoints, crash pings, and sponsored recommendation services completely severed in code. Your history, bookmarks, and browsing activity never leave your machine.
+                </p>
             </div>
         </div>
 
         <div class="contact-box">
-            <h3>Still need help?</h3>
-            <p>If you've encountered a bug, build error, or have a feature request, please open an issue on our GitHub repository.</p>
-            <a href="https://github.com/deadxfire/Rinswa-browser/issues" class="btn" target="_blank">Open an Issue</a>
+            <h3>Still need help or found a bug?</h3>
+            <p>If you've encountered a bug, build error, or have a feature request, please open an issue or start a discussion on our official GitHub repository.</p>
+            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+                <a href="https://github.com/deadxfire/Rinswa-browser/issues" class="btn" target="_blank" rel="noopener">Open an Issue</a>
+                <a href="https://github.com/deadxfire/Rinswa-browser/discussions" class="btn" target="_blank" rel="noopener" style="background:linear-gradient(135deg, #3b82f6, #8b5cf6); box-shadow:0 0 20px rgba(59,130,246,0.4);">Join Discussions</a>
+            </div>
         </div>
     </div>
+
     <script>
         (function() {
             var params = new URLSearchParams(window.location.search);
@@ -328,6 +522,8 @@
                 banner.style.cssText = "background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.4); padding: 16px 24px; border-radius: 12px; margin-bottom: 24px; text-align: center; color: #00F0FF; font-weight: 500; backdrop-filter: blur(10px);";
                 var topicTitle = topic.charAt(0).toUpperCase() + topic.slice(1);
                 if (topic === "preferences") topicTitle = "Settings & Appearance";
+                if (topic === "themes") topicTitle = "Theme Customization & Light/Dark Mode";
+                if (topic === "tabs") topicTitle = "All Tabs & Tab Groups";
                 banner.innerHTML = "💡 Help Topic: <strong>" + topicTitle + "</strong> — View answers below or contact the Rinswa team.";
                 var container = document.querySelector('.support-container');
                 if (container) {
