@@ -319,5 +319,25 @@
             <a href="https://github.com/deadxfire/Rinswa-browser/issues" class="btn" target="_blank">Open an Issue</a>
         </div>
     </div>
+    <script>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var topic = params.get('topic');
+            if (topic) {
+                var banner = document.createElement('div');
+                banner.style.cssText = "background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.4); padding: 16px 24px; border-radius: 12px; margin-bottom: 24px; text-align: center; color: #00F0FF; font-weight: 500; backdrop-filter: blur(10px);";
+                var topicTitle = topic.charAt(0).toUpperCase() + topic.slice(1);
+                if (topic === "preferences") topicTitle = "Settings & Appearance";
+                banner.innerHTML = "💡 Help Topic: <strong>" + topicTitle + "</strong> — View answers below or contact the Rinswa team.";
+                var container = document.querySelector('.support-container');
+                if (container) {
+                    var faqGrid = container.querySelector('.faq-grid');
+                    if (faqGrid) {
+                        container.insertBefore(banner, faqGrid);
+                    }
+                }
+            }
+        })();
+    </script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Rinswa Support...</title>
+    <script>
+        (function() {
+            var path = window.location.pathname;
+            var target = "https://deadxfire.github.io/Rinswa-Browser-Support/support.html";
+            
+            if (path.includes("support.html")) {
+                var suffix = path.split("support.html")[1] || "";
+                suffix = suffix.replace(/^\/+/, "");
+                if (suffix) {
+                    target += "?topic=" + encodeURIComponent(suffix);
+                }
+            } else if (path.includes("preferences")) {
+                target += "?topic=preferences";
+            }
+            window.location.replace(target);
+        })();
+    </script>
+    <meta http-equiv="refresh" content="0; url=https://deadxfire.github.io/Rinswa-Browser-Support/support.html">
+</head>
+<body style="background:#050505; color:#FFFFFF; font-family:'Segoe UI', sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; margin:0; text-align:center;">
+    <div style="background:rgba(20,20,25,0.8); border:1px solid rgba(255,255,255,0.1); padding:40px; border-radius:16px; backdrop-filter:blur(20px); max-width:400px;">
+        <h2 style="margin-top:0; color:#00F0FF; font-weight:600;">Rinswa Support</h2>
+        <p style="color:#A0A0B0; font-size:15px; margin-bottom:24px;">Redirecting you to the support center...</p>
+        <a href="https://deadxfire.github.io/Rinswa-Browser-Support/support.html" style="display:inline-block; padding:12px 24px; background:linear-gradient(135deg, #FF0055, #7928CA); color:#fff; text-decoration:none; border-radius:8px; font-weight:600;">Go to Support</a>
+    </div>
+</body>
+</html>
