@@ -95,6 +95,13 @@
             gap: 12px;
             letter-spacing: -0.5px;
         }
+        
+        .logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
 
         .logo span {
             background: var(--gradient-ribbon);
@@ -321,7 +328,8 @@
 
     <nav>
         <div class="logo">
-            <span>Rinswa</span> Browser
+            <img src="assets/logo.png" alt="Rinswa Emblem">
+            <div><span>Rinswa</span> Browser</div>
         </div>
         <div class="nav-links">
             <a href="index.html" class="active">Home</a>
