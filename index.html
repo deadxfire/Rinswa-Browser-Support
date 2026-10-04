@@ -3,402 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rinswa Browser - The Next-Gen Cyber-Glass Web Experience</title>
-    <meta name="description" content="Experience the web like never before. Rinswa Browser brings a modern Modular Cyber-Glass UI, Built-in Ad Blocker, and ultimate speed.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Rinswa Browser - The Next Generation Cyber-Glass Web Experience">
+    <title>Rinswa Browser | Fast, Private, Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #060913;
-            --bg-surface: rgba(11, 15, 29, 0.7);
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --border-glow: rgba(255, 255, 255, 0.08);
-            
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            
-            --ribbon-red: #ef4444;
-            --ribbon-orange: #f59e0b;
-            --ribbon-green: #10b981;
-            --ribbon-blue: #3b82f6;
-            --ribbon-purple: #8b5cf6;
-            
-            --gradient-ribbon: linear-gradient(90deg, var(--ribbon-red), var(--ribbon-orange), var(--ribbon-green), var(--ribbon-blue), var(--ribbon-purple));
-            --gradient-text: linear-gradient(90deg, #f8fafc 0%, #cbd5e1 100%);
+            --bg-color: #050505;
+            --glass-bg: rgba(20, 20, 25, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-primary: #00F0FF;
+            --accent-secondary: #FF0055;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0B0;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 85, 0.15), transparent 25%);
+            background-attachment: fixed;
         }
 
-        /* Abstract Background Glows */
-        .bg-glow {
+        /* Ambient glowing orbs */
+        .orb {
             position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 60%);
-            top: -300px;
-            left: -200px;
             border-radius: 50%;
-            z-index: -1;
             filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
         }
         
-        .bg-glow.right {
-            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
-            top: 20%;
-            left: auto;
-            right: -300px;
-        }
-        
-        .bg-glow.bottom {
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
-            top: auto;
-            bottom: -400px;
-            left: 20%;
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 240, 255, 0.1);
+            top: -100px;
+            left: -100px;
         }
 
-        /* Navbar */
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 0, 85, 0.1);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Navigation */
         nav {
             padding: 24px 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-glow);
-            background: rgba(6, 9, 19, 0.6);
-            backdrop-filter: blur(24px);
-            position: fixed;
-            width: 100%;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
+        .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo img {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            gap: 16px;
+            text-decoration: none;
         }
 
-        .logo span {
-            background: var(--gradient-ribbon);
+        .brand img {
+            height: 48px;
+            width: 48px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .brand:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .brand h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff, #b3b3b3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-main);
             text-decoration: none;
-            margin-left: 32px;
             font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--text-primary);
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 24px;
-            border-radius: 99px;
-            color: white !important;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            position: relative;
         }
-        
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 180px 24px 100px;
-            max-width: 1000px;
-            margin: 0 auto;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
         }
 
-        .badge {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            color: #c4b5fd;
-            padding: 6px 16px;
-            border-radius: 99px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-        }
-
-        h1 {
-            font-size: 72px;
+        .hero h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
             font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 24px;
-            line-height: 1.05;
-            letter-spacing: -1.5px;
-            background: var(--gradient-text);
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            max-width: 900px;
+            animation: fadeUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
         .hero p {
-            font-size: 22px;
-            color: var(--text-secondary);
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin-bottom: 48px;
-            max-width: 700px;
-            font-weight: 300;
+            animation: fadeUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
+        /* CTA Buttons */
         .cta-group {
             display: flex;
-            gap: 20px;
+            gap: 24px;
+            animation: fadeUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            border-radius: 99px;
-            background: var(--gradient-ribbon);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+            background: linear-gradient(135deg, var(--accent-primary), #0077ff);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
             border: none;
-            cursor: pointer;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0));
+            opacity: 0.2;
+            z-index: -1;
+            transition: opacity 0.3s;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.6);
         }
 
         .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            border-radius: 99px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            background: var(--glass-bg);
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
         }
 
-        /* Features Section */
+        /* Feature Cards */
         .features {
-            padding: 60px 24px 120px;
-            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            padding: 80px 48px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 40px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .icon-box {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .icon-box svg {
-            width: 32px;
-            height: 32px;
-            stroke: url(#ribbon-gradient);
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .card h3 {
-            font-size: 26px;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            padding: 40px 24px;
-            text-align: center;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border-glow);
-            font-size: 15px;
-            background: rgba(6, 9, 19, 0.9);
-        }
-
-        /* SVG Gradient Definition */
-        .svg-defs {
+        .feature-card::before {
+            content: '';
             position: absolute;
-            width: 0;
-            height: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            z-index: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 3rem; }
+            .nav-links { display: none; }
+            nav { padding: 20px; }
+            .features { padding: 40px 20px; }
+            .cta-group { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-
-    <svg class="svg-defs">
-        <defs>
-            <linearGradient id="ribbon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ef4444" />
-                <stop offset="50%" stop-color="#f59e0b" />
-                <stop offset="100%" stop-color="#8b5cf6" />
-            </linearGradient>
-        </defs>
-    </svg>
-
-    <div class="bg-glow"></div>
-    <div class="bg-glow right"></div>
-    <div class="bg-glow bottom"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
     <nav>
-        <div class="logo">
-            <img src="assets/logo.png" alt="Rinswa Emblem">
-            <div><span>Rinswa</span> Browser</div>
-        </div>
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="Rinswa Logo">
+            <h1>Rinswa</h1>
+        </a>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="support.html">Support</a>
-            <a href="https://github.com/deadxfire/Rinswa-browser">GitHub</a>
-            <a href="https://github.com/deadxfire/Rinswa-browser/releases" class="nav-btn">Download v1.0</a>
+            <a href="https://github.com/deadxfire/Rinswa-browser" target="_blank">Source</a>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="badge">Stable Release v1.0.0 Now Available</div>
-        <h1>The Web, Reimagined.</h1>
-        <p>Experience blazing fast speeds, zero ads, and a stunning modular Cyber-Glass aesthetic designed exclusively for power users.</p>
-        
+    <section class="hero">
+        <h2>Browse the Web in<br>Cyber-Glass.</h2>
+        <p>A next-generation browser built on the stable Firefox 157 engine. Designed with ultra-modern aesthetics, extreme privacy, and uncompromising speed.</p>
         <div class="cta-group">
-            <a href="https://github.com/deadxfire/Rinswa-browser/releases" class="btn-primary">
-                Download for Windows
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </a>
-            <a href="support.html" class="btn-secondary">
-                View Documentation
-            </a>
-        </div>
-    </header>
-
-    <section class="features">
-        <div class="grid">
-            <!-- Feature 1 -->
-            <div class="card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                </div>
-                <h3>Modular Cyber-Glass UI</h3>
-                <p>Say goodbye to cluttered, boring interfaces. Rinswa features detached floating tabs, a centered capsule address bar, and deep frosted glass aesthetics powered by native Windows APIs.</p>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                </div>
-                <h3>Native Ad Blocker</h3>
-                <p>Browse the web without interruptions. Rinswa ships with a pre-configured, highly optimized ad blocking engine built directly into the core settings. Turn it on or off with a single click.</p>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24">
-                        <polyline points="13 2 13 9 22 9"></polyline>
-                        <path d="M13 2L22 11V22a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9z"></path>
-                    </svg>
-                </div>
-                <h3>Lightning Fast Engine</h3>
-                <p>Compiled natively for x64 architecture, Rinswa strips out telemetry and bloatware, delivering pure Gecko engine performance that loads your favorite sites instantly.</p>
-            </div>
+            <a href="https://github.com/deadxfire/Rinswa-browser/releases" class="btn btn-primary">Download Stable v1.0.0</a>
+            <a href="support.html" class="btn btn-secondary">Get Support</a>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Rinswa Browser. Created by Arindam Makar.</p>
-    </footer>
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Glassmorphic UI</h3>
+            <p>Experience a stunning, deeply integrated Cyber-Glass aesthetic that blurs the lines between your content and the browser.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Engineered for Privacy</h3>
+            <p>Telemetry disabled by default. Built-in ad-blocking capabilities via native integrations. Your data stays on your machine.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Gecko Engine</h3>
+            <p>Powered by the ultra-fast Firefox 157 rendering engine, bringing you state-of-the-art web compatibility and performance.</p>
+        </div>
+    </section>
 </body>
 </html>
