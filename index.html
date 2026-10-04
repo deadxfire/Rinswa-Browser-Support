@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rinswa Browser - The Next-Gen Cyber-Glass Web Experience</title>
+    <meta name="description" content="Experience the web like never before. Rinswa Browser brings a modern Modular Cyber-Glass UI, Built-in Ad Blocker, and ultimate speed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #060913;
+            --bg-surface: rgba(11, 15, 29, 0.7);
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-glow: rgba(255, 255, 255, 0.08);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            
+            --ribbon-red: #ef4444;
+            --ribbon-orange: #f59e0b;
+            --ribbon-green: #10b981;
+            --ribbon-blue: #3b82f6;
+            --ribbon-purple: #8b5cf6;
+            
+            --gradient-ribbon: linear-gradient(90deg, var(--ribbon-red), var(--ribbon-orange), var(--ribbon-green), var(--ribbon-blue), var(--ribbon-purple));
+            --gradient-text: linear-gradient(90deg, #f8fafc 0%, #cbd5e1 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Abstract Background Glows */
+        .bg-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 60%);
+            top: -300px;
+            left: -200px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+        }
+        
+        .bg-glow.right {
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
+            top: 20%;
+            left: auto;
+            right: -300px;
+        }
+        
+        .bg-glow.bottom {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+            top: auto;
+            bottom: -400px;
+            left: 20%;
+        }
+
+        /* Navbar */
+        nav {
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glow);
+            background: rgba(6, 9, 19, 0.6);
+            backdrop-filter: blur(24px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: var(--gradient-ribbon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 32px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 24px;
+            border-radius: 99px;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 180px 24px 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #c4b5fd;
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            border-radius: 99px;
+            background: var(--gradient-ribbon);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 24px 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .icon-box svg {
+            width: 32px;
+            height: 32px;
+            stroke: url(#ribbon-gradient);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card h3 {
+            font-size: 26px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-glow);
+            font-size: 15px;
+            background: rgba(6, 9, 19, 0.9);
+        }
+
+        /* SVG Gradient Definition */
+        .svg-defs {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <svg class="svg-defs">
+        <defs>
+            <linearGradient id="ribbon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ef4444" />
+                <stop offset="50%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#8b5cf6" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow right"></div>
+    <div class="bg-glow bottom"></div>
+
+    <nav>
+        <div class="logo">
+            <span>Rinswa</span> Browser
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="support.html">Support</a>
+            <a href="https://github.com/deadxfire/Rinswa-browser">GitHub</a>
+            <a href="https://github.com/deadxfire/Rinswa-browser/releases" class="nav-btn">Download v1.0</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="badge">Stable Release v1.0.0 Now Available</div>
+        <h1>The Web, Reimagined.</h1>
+        <p>Experience blazing fast speeds, zero ads, and a stunning modular Cyber-Glass aesthetic designed exclusively for power users.</p>
+        
+        <div class="cta-group">
+            <a href="https://github.com/deadxfire/Rinswa-browser/releases" class="btn-primary">
+                Download for Windows
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+            </a>
+            <a href="support.html" class="btn-secondary">
+                View Documentation
+            </a>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="grid">
+            <!-- Feature 1 -->
+            <div class="card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h3>Modular Cyber-Glass UI</h3>
+                <p>Say goodbye to cluttered, boring interfaces. Rinswa features detached floating tabs, a centered capsule address bar, and deep frosted glass aesthetics powered by native Windows APIs.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <h3>Native Ad Blocker</h3>
+                <p>Browse the web without interruptions. Rinswa ships with a pre-configured, highly optimized ad blocking engine built directly into the core settings. Turn it on or off with a single click.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="13 2 13 9 22 9"></polyline>
+                        <path d="M13 2L22 11V22a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9z"></path>
+                    </svg>
+                </div>
+                <h3>Lightning Fast Engine</h3>
+                <p>Compiled natively for x64 architecture, Rinswa strips out telemetry and bloatware, delivering pure Gecko engine performance that loads your favorite sites instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rinswa Browser. Created by Arindam Makar.</p>
+    </footer>
+</body>
+</html>
