@@ -158,13 +158,13 @@
 
     /* Top Ribbon Accent */
     .top-ribbon-bar {
-      height: 4px;
+      height: 3.5px;
       width: 100%;
       background: var(--rinswa-ribbon);
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
-      z-index: 1100;
+      z-index: 1001;
     }
 
     /* Typography Utilities */
@@ -274,6 +274,7 @@
       text-decoration: none;
       font-size: 0.95rem;
       font-weight: 600;
+      white-space: nowrap;
       transition: color var(--trans-fast);
       position: relative;
       padding: 6px 0;
@@ -1260,11 +1261,10 @@
   <div class="ambient-glow ambient-glow-2"></div>
   <div class="ambient-glow ambient-glow-3"></div>
 
-  <!-- Top Ribbon Accent Line -->
-  <div class="top-ribbon-bar"></div>
-
   <!-- Top Navigation -->
   <nav>
+    <!-- Top Rainbow Accent Ribbon -->
+    <div class="top-ribbon-bar"></div>
     <div class="container nav-inner">
       <a href="index.html" class="brand">
         <img src="Glossy%20Multicolour%20Ribbon%20R%20Emblem.png" alt="Rinswa Logo" class="brand-logo">
